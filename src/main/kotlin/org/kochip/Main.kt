@@ -3,6 +3,7 @@ package org.kochip
 import org.kochip.drivers.CHIP8_HEIGHT
 import org.kochip.drivers.CHIP8_WIDTH
 import org.kochip.drivers.DisplayDriver
+import org.kochip.drivers.InputDriver
 import javax.swing.JFrame
 import javax.swing.WindowConstants
 
@@ -18,8 +19,10 @@ fun main() {
     frame.isVisible = true
 
     display.repaint()
+    val input = InputDriver(frame)
 
     while (true) {
+        val keys = input.poll()
         display.repaint()
         Thread.sleep(1000/60)
     }
